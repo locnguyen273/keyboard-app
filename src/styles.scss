@@ -11,6 +11,11 @@ button {
   cursor: pointer;
 }
 
+p {
+  margin-bottom: 0 !important;
+}
+
 ul li {
   list-style: none;
+  margin: 0 !important;
 }
