@@ -12,6 +12,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { IntroduceComponent } from './pages/introduce/introduce.component';
 import { ServiceComponent } from './pages/service/service.component';
+import { CoreModule } from './core/core.module';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import { ServiceComponent } from './pages/service/service.component';
     HomeComponent,
     ProductListComponent,
     IntroduceComponent,
-    ServiceComponent
+    ServiceComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // core and shared
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
