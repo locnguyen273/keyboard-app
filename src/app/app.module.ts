@@ -13,7 +13,9 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { IntroduceComponent } from './pages/introduce/introduce.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { CoreModule } from './core/core.module';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +28,16 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     ProductListComponent,
     IntroduceComponent,
     ServiceComponent,
-    SpinnerComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
+    // core and shared
+    CoreModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // core and shared
-    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

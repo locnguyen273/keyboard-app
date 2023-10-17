@@ -28,8 +28,8 @@
       <button class="header__auth" (click)="onShowDropdown()"><i class="fa-regular fa-user"></i></button>
       <div class="header__auth--dropdown" *ngIf="showAuthDropdown">
         <div>
-          <a href="">Đăng nhập</a>
-          <a href="">Đăng ký</a>
+          <a [routerLink]="'/login'">Đăng nhập</a>
+          <a [routerLink]="'/register'">Đăng ký</a>
         </div>
         <ng-template #showAuth>
           <a href="">Thông tin cá nhân</a>
