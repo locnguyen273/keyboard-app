@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-auth-templates',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth-templates.component.scss']
 })
 export class AuthTemplatesComponent {
+  title:string = '';
 
+  constructor(private route: ActivatedRoute) {
+    this.title = 'Đăng nhập'  
+    this.checkRouteParam();
+  }
+
+  checkRouteParam() {
+    console.log(this.route);
+    this.route.params.subscribe((params: any) => {
+      console.log(params);
+    })
+  }
 }

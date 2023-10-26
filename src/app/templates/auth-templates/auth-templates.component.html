@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="auth-template">
+  <div class="auth-template__container">
+    <a [routerLink]="'/'" class="auth-template__logo">
+      <img src="../../../assets/images/icon-logo-removebg-preview.png" alt="img">
+    </a>
+    <h3 class="auth-template__title">{{ title }}</h3>
+    <router-outlet></router-outlet>
+  </div>
+</div>
