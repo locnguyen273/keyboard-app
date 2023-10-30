@@ -1,18 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, Observable, throwError } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { of, Observable, map, catchError } from 'rxjs';
+import { IUserLogin, UserLoginResponse } from 'src/app/models/user';
+import { DOMAIN_URL } from '../config/api';
+import { ErrorResponse } from '../config/common';
 
-interface LoginContextInterface {
-  username: string;
-  password: string;
-  token: string;
-}
-
-const defaultUser = {
-  username: 'Mathis',
-  password: '12345',
-  token: '12345',
-};
 
 @Injectable({
   providedIn: 'root',
@@ -20,16 +12,17 @@ const defaultUser = {
 export class AuthService {
   token: string | undefined;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  login(loginContext: LoginContextInterface): Observable<User> {
-    const isDefaultUser =
-      loginContext.username === defaultUser.username &&
-      loginContext.password === defaultUser.password;
-    if (isDefaultUser) {
-      return of(defaultUser);
-    }
-    return throwError('Invalid username or password');
+  login(request: IUserLogin): Observable<UserLoginResponse> {
+    return this.http.post<UserLoginResponse>(`${DOMAIN_URL}user/login`, request).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError((error: ErrorResponse) => {
+        throw "Invalid username or password";
+      })
+    );
   }
 
   logout(): Observable<boolean> {

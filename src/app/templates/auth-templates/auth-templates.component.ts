@@ -10,14 +10,11 @@ export class AuthTemplatesComponent {
   title:string = '';
 
   constructor(private route: ActivatedRoute) {
-    this.title = 'Đăng nhập'  
+    this.title = 'Đăng nhập'
     this.checkRouteParam();
   }
 
   checkRouteParam() {
-    console.log(this.route);
-    this.route.params.subscribe((params: any) => {
-      console.log(params);
-    })
+    this.route.params.subscribe((params: any) => {})
   }
 }

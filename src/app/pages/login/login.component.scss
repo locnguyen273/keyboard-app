@@ -1,10 +1,19 @@
 .login {
-  // position: absolute;
-  // width: 500px;
-  // height: 500px;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-  // box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  // border-radius: 10px;
+  &__input,
+  &__submit {
+    width: 100%;
+  }
+  &__submit {
+    height: 50px;
+    font-size: 18px;
+  }
+  &__router {
+    margin: 10px 0 0;
+    text-align: center;
+    font-size: 16px;
+
+    a {
+      font-weight: 600;
+    }
+  }
 }
