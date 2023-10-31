@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { ClickOutsideDirective } from './shared/directives/clickOutside.directive';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,10 +28,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ClickOutsideDirective,
     HeaderComponent,
     FooterComponent,
     AuthTemplatesComponent,
@@ -41,6 +44,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ServiceComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
   ],
   imports: [
     // core and shared

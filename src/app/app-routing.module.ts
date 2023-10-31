@@ -8,6 +8,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { AuthTemplatesComponent } from './templates/auth-templates/auth-templates.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'product-list', component: ProductListComponent },
       { path: 'introduce', component: IntroduceComponent },
       { path: 'service', component: ServiceComponent },
+      { path: 'profile', component: ProfileComponent },
     ]
   },
   {

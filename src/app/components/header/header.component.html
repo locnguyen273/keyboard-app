@@ -23,18 +23,18 @@
       <a href="">Giới thiệu</a>
       <a href="">Dịch vụ</a>
     </div>
-    <div class="header__right">
+    <div class="header__right" clickOutside (clickOutside)="clickedOutside()">
       <button><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button class="header__auth" (click)="onShowDropdown()"><i class="fa-regular fa-user"></i></button>
+      <button class="header__auth" (click)="toggleMenu()"><i class="fa-regular fa-user"></i></button>
       <div class="header__auth--dropdown" *ngIf="showAuthDropdown">
-        <div>
+        <div *ngIf="!userLoggedIn">
           <a [routerLink]="'login'">Đăng nhập</a>
           <a [routerLink]="'/register'">Đăng ký</a>
         </div>
-        <ng-template #showAuth>
-          <a href="">Thông tin cá nhân</a>
-          <a href="">Đăn xuất</a>
-        </ng-template>
+        <div *ngIf="userLoggedIn">
+          <a [routerLink]="'/profile'">Thông tin cá nhân</a>
+          <a (click)="onLogOut()">Đăng xuất</a>
+        </div>
       </div>
       <button class="header__right--cart">
         <i class="fa-solid fa-cart-shopping"></i>

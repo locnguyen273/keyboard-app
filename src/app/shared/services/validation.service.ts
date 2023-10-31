@@ -14,7 +14,6 @@ export class ValidationService {
       maxlength: `The field can't contain more than ${validatorValue.requiredLength} characters.`,
       minlength: `The field must contain atleast ${validatorValue.requiredLength} characters.`
     };
-    console.log(config);
     // return config[validatorName];
   }
 

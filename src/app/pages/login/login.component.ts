@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, isDevMode } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -36,7 +36,12 @@ export class LoginComponent {
     this.auhtService.login(loginRequest).subscribe((res: UserLoginResponse) => {
       if(res.status) {
         const loginData:any = res.data;
-        this.store.dispatch(loginUserAction(loginData))
+        // this.store.dispatch(loginUserAction(loginData));
+        if(!isDevMode) {
+          localStorage.setItem('userInfo', btoa(JSON.stringify(loginData)));
+        } else {
+          localStorage.setItem('userInfo', JSON.stringify(loginData));
+        }
         this.router.navigateByUrl('/');
       }
     })
