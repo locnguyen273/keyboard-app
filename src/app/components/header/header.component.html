@@ -1,16 +1,16 @@
 <div class="header">
   <div class="header__container">
     <div class="header__left">
-      <img
+      <!-- <img
         src="https://theme.hstatic.net/200000538213/1000921951/14/logo.png?v=460"
         alt="logo"
-      />
+      /> -->
     </div>
     <div class="header__menu">
       <a href="">Trang chủ</a>
       <div class="header__menu--product">
         <a href="">
-          Sản phẩm 
+          Sản phẩm
           <i class="fa-solid fa-chevron-down"></i>
         </a>
         <div class="dropdown-content">
@@ -23,9 +23,19 @@
       <a href="">Giới thiệu</a>
       <a href="">Dịch vụ</a>
     </div>
-    <div class="header__right">
+    <div class="header__right" clickOutside (clickOutside)="clickedOutside()">
       <button><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button><i class="fa-regular fa-user"></i></button>
+      <button class="header__auth" (click)="toggleMenu()"><i class="fa-regular fa-user"></i></button>
+      <div class="header__auth--dropdown" *ngIf="showAuthDropdown">
+        <div *ngIf="!userLoggedIn">
+          <a [routerLink]="'login'">Đăng nhập</a>
+          <a [routerLink]="'/register'">Đăng ký</a>
+        </div>
+        <div *ngIf="userLoggedIn">
+          <a [routerLink]="'/profile'">Thông tin cá nhân</a>
+          <a (click)="onLogOut()">Đăng xuất</a>
+        </div>
+      </div>
       <button class="header__right--cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span>0</span>

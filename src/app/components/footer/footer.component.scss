@@ -1,0 +1,27 @@
+.footer {
+  &__container {
+    background-color: #1d1d1f;
+    padding: 40px 0 30px 0;
+    color: #fff;
+  }
+  &__list {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    column-gap: 30px;
+  }
+  &__item {
+    &--content {
+      max-width: 410px;
+      text-align: justify;
+    }
+  }
+  &__bottom {
+    background-color: #1e73be;
+    color: #ffffff80;
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+  }
+}

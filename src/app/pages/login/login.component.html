@@ -1,0 +1,36 @@
+<div class="login">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="login__input mt-3">
+      <mat-label>Vui lòng nhập tên tài khoản/email</mat-label>
+      <input matInput placeholder="Vui lòng nhập tên tài khoản/email" formControlName="email" required />
+      <mat-error *ngIf="loginForm.controls['email'].errors?.['required']">
+        Tên tài khoản/ email không được bỏ trống
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['email'].errors?.['email']">
+        Tên tài khoản/ email phải đúng định dạng abc@gmail.com
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="login__input mt-3">
+      <mat-label>Vui lòng nhập mật khẩu</mat-label>
+      <input matInput placeholder="Vui lòng nhập mật khẩu" [type]="hide ? 'password' : 'text'"
+        formControlName="password" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.controls['password'].errors?.['required']">
+        Mật khẩu không được bỏ trống
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="login__submit mt-3">
+      Đăng nhập
+    </button>
+  </form>
+
+  <p class="login__router">
+    Bạn chưa có tài khoản ?
+    <a [routerLink]="['/register']">Đăng ký ngay</a>
+  </p>
+</div>
