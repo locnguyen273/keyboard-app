@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
-import { ControlMessageComponent } from './components/control-message/control-message.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-// import { SpinnerComponent } from './component/spinner/spinner.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faPlus,
@@ -36,9 +33,9 @@ import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
-  declarations: [ControlMessageComponent, SpinnerComponent],
+  declarations: [],
   exports: [
     CommonModule,
     FormsModule,
@@ -46,8 +43,6 @@ import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
     RouterModule,
     MaterialModule,
     FontAwesomeModule,
-    ControlMessageComponent,
-    SpinnerComponent
   ]
 })
 

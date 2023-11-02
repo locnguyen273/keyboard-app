@@ -20,8 +20,6 @@ export class CheckTokenService {
       } else {
         this.router.navigateByUrl('/login');
       }
-    } else {
-      this.router.navigateByUrl('/');
     }
   }
 

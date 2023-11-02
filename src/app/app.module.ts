@@ -1,5 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,6 +60,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     StoreDevtoolsModule.instrument({ maxAge: false, logOnly: !isDevMode() }),
     StoreModule.forRoot({
       auth: authReducer
