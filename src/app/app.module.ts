@@ -9,14 +9,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthTemplatesComponent } from './templates/auth-templates/auth-templates.component';
 import { CommonTemplatesComponent } from './templates/common-templates/common-templates.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { IntroduceComponent } from './pages/introduce/introduce.component';
-import { ServiceComponent } from './pages/service/service.component';
+import { HomeComponent } from './pages/client/home/home.component';
+import { ProductListComponent } from './pages/client/product-list/product-list.component';
+import { IntroduceComponent } from './pages/client/introduce/introduce.component';
+import { ServiceComponent } from './pages/client/service/service.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/client/login/login.component';
+import { RegisterComponent } from './pages/client/register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { ClickOutsideDirective } from './shared/directives/clickOutside.directive';
 
@@ -29,7 +29,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from './pages/client/profile/profile.component';
+import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
+import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
+import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    LoginAdminComponent,
+    HomeAdminComponent,
+    AdminTemplateComponent,
   ],
   imports: [
     // core and shared

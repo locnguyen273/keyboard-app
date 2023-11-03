@@ -1,20 +1,17 @@
-import { Component, isDevMode } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { IUserLogin, UserDataLoginResponse, UserLoginResponse } from 'src/app/models/user';
-import { Store, select } from '@ngrx/store';
-import { loginUserAction } from 'src/app/store/actions/auth.action';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/store/app.state';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { Component, isDevMode } from '@angular/core';
+import { UserDataLoginResponse, UserLoginResponse } from 'src/app/models/user';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.scss']
 })
-export class LoginComponent {
+export class LoginAdminComponent {
   loginForm;
   hide = true;
   auth$?: Observable<UserDataLoginResponse>
@@ -23,14 +20,14 @@ export class LoginComponent {
     public fb: FormBuilder,
     private auhtService: AuthService,
     private router: Router,
-    private store: Store<AppState>,
+    // private store: Store<AppState>,
     private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     })
-    this.auth$ = store.pipe(select('loginUser'));
+    // this.auth$ = store.pipe(select('loginUser'));
   }
 
   onSubmit(): void {
@@ -50,7 +47,6 @@ export class LoginComponent {
       }
     }, (error) => {
       this.toastr.error(error, 'Opps !!!');
-      console.log("err", error);
     })
   }
 }
