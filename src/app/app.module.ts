@@ -33,6 +33,8 @@ import { ProfileComponent } from './pages/client/profile/profile.component';
 import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
 import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { AdminTemplateComponent } from './templates/admin-template/admin-templat
     LoginAdminComponent,
     HomeAdminComponent,
     AdminTemplateComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     // core and shared
@@ -72,9 +75,7 @@ import { AdminTemplateComponent } from './templates/admin-template/admin-templat
       preventDuplicates: true,
     }),
     StoreDevtoolsModule.instrument({ maxAge: false, logOnly: !isDevMode() }),
-    StoreModule.forRoot({
-      auth: authReducer
-    }),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [

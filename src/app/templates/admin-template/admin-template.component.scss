@@ -1,0 +1,41 @@
+$widthLeft: 250px;
+$backgroundLeft: #fff;
+$backgroundMain: #eff1f7;
+$boxShadowLeft: #508ff41a;
+
+.admin-template {
+  display: flex;
+  min-height: 100vh;
+  &__left {
+    width: $widthLeft;
+    background: $backgroundLeft;
+    border-right: 1px solid #d3d3d333;
+    box-shadow: 0 12px 30px $boxShadowLeft;
+    &__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #a1a1a15e;
+
+      img {
+        width: 70px;
+      }
+      h3 {
+        margin: 10px 0 5px;
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  &__right {
+    width: calc(100vw - $widthLeft);
+    background-color: $backgroundMain;
+  }
+  &__header {
+    height: 60px;
+    padding: 8px;
+    background-color: $backgroundLeft;
+  }
+}

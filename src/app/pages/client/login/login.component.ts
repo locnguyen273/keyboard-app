@@ -6,18 +6,18 @@ import { IUserLogin, UserDataLoginResponse, UserLoginResponse } from 'src/app/mo
 import { Store, select } from '@ngrx/store';
 import { loginUserAction } from 'src/app/store/actions/auth.action';
 import { Observable } from 'rxjs';
-import { AppState } from 'src/app/store/app.state';
+import { AppState } from 'src/app/store/app.interface';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm;
   hide = true;
-  auth$?: Observable<UserDataLoginResponse>
+  auth$?: Observable<UserDataLoginResponse>;
 
   constructor(
     public fb: FormBuilder,
@@ -29,27 +29,34 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
-    })
+    });
     this.auth$ = store.pipe(select('loginUser'));
   }
 
   onSubmit(): void {
     let loginRequest = this.loginForm.value;
-    this.auhtService.login(loginRequest).subscribe((res: UserLoginResponse) => {
-      if(res.status) {
-        const loginData = res.data;
-        this.toastr.success(res.message, 'Xin chúc mừng !!!');
-        if(!isDevMode) {
-          localStorage.setItem('userInfo', btoa(JSON.stringify(loginData)));
-        } else {
-          localStorage.setItem('userInfo', JSON.stringify(loginData));
+    this.auhtService.login(loginRequest).subscribe(
+      (res: UserLoginResponse) => {
+        if (res.status) {
+          const loginData = res.data;
+          if (loginData.role.toLowerCase() === 'admin') {
+            this.router.navigateByUrl('/admin');
+          } else {
+            this.router.navigateByUrl('/');
+          }
+          this.toastr.success(res.message, 'Xin chúc mừng !!!');
+          if (!isDevMode) {
+            localStorage.setItem('userInfo', btoa(JSON.stringify(loginData)));
+          } else {
+            localStorage.setItem('userInfo', JSON.stringify(loginData));
+          }
+        } else if (!res.status) {
+          this.toastr.error(res.message, 'Opps !!!');
         }
-        this.router.navigateByUrl('/');
-      } else if(!res.status) {
-        this.toastr.error(res.message, 'Opps !!!');
+      },
+      (error) => {
+        this.toastr.error(error, 'Opps !!!');
       }
-    }, (error) => {
-      this.toastr.error(error, 'Opps !!!');
-    })
+    );
   }
 }
