@@ -21,13 +21,6 @@ export class AppComponent {
     private store: Store<AppState>
   ) {
     this.checkTokenService.oncheckToken();
-    if (
-      JSON.parse(String(localStorage.getItem('userInfo')))?.role === 'admin'
-    ) {
-      this.router.navigateByUrl('/admin');
-    } else {
-      this.router.navigateByUrl('/');
-    }
   }
 
   ngOnInit(): void {

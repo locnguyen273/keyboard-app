@@ -13,6 +13,9 @@ import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.compo
 import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
 import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
 
+const checkRoleAdmin =
+  JSON.parse(String(localStorage.getItem('userInfo')))?.role === 'admin';
+
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +26,8 @@ const routes: Routes = [
       { path: 'introduce', component: IntroduceComponent },
       { path: 'service', component: ServiceComponent },
       { path: 'profile', component: ProfileComponent },
-    ]
+      { path: '**', redirectTo: '', pathMatch: 'full' },
+    ],
   },
   {
     path: '',
@@ -31,23 +35,27 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-    ]
+    ],
   },
-  // role admin
+];
+
+const routesAdmin: Routes = [
   {
-    path: 'admin/login', component: LoginAdminComponent
+    path: 'admin/login',
+    component: LoginAdminComponent,
   },
   {
     path: 'admin',
     component: AdminTemplateComponent,
     children: [
       { path: '', component: HomeAdminComponent },
-    ]
+      { path: '**', redirectTo: 'admin', pathMatch: 'full' },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(checkRoleAdmin ? routesAdmin : routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
