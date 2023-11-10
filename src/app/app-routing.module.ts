@@ -9,12 +9,9 @@ import { AuthTemplatesComponent } from './templates/auth-templates/auth-template
 import { LoginComponent } from './pages/client/login/login.component';
 import { RegisterComponent } from './pages/client/register/register.component';
 import { ProfileComponent } from './pages/client/profile/profile.component';
-import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
 import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
-
-const checkRoleAdmin =
-  JSON.parse(String(localStorage.getItem('userInfo')))?.role === 'admin';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -26,7 +23,6 @@ const routes: Routes = [
       { path: 'introduce', component: IntroduceComponent },
       { path: 'service', component: ServiceComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
     ],
   },
   {
@@ -37,25 +33,20 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
     ],
   },
-];
 
-const routesAdmin: Routes = [
-  {
-    path: 'admin/login',
-    component: LoginAdminComponent,
-  },
   {
     path: 'admin',
     component: AdminTemplateComponent,
     children: [
-      { path: '', component: HomeAdminComponent },
-      { path: '**', redirectTo: 'admin', pathMatch: 'full' },
+      { path: 'home', component: HomeAdminComponent },
     ],
   },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'page-not-found' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(checkRoleAdmin ? routesAdmin : routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -11,7 +11,7 @@ import { getLoading } from 'src/app/store/selectors/spinner.selector';
 })
 export class AdminTemplateComponent implements OnInit {
   showLoading?: Observable<boolean>;
-
+  search : String ="";
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 <div class="login">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keydown)="enterSubmit($event)">
     <mat-form-field appearance="outline" class="login__input mt-3">
       <mat-label>Vui lòng nhập tên tài khoản/email</mat-label>
       <input matInput placeholder="Vui lòng nhập tên tài khoản/email" formControlName="email" required />

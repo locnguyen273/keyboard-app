@@ -9,7 +9,18 @@
   </div>
   <div class="admin-template__right">
     <div class="admin-template__header">
-
+      <div class="admin-template__container">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <span matPrefix> </span>
+          <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="search">
+          <button matSuffix mat-button><mat-icon>search</mat-icon></button>
+        </mat-form-field>
+        <div class="admin-template__container--right">
+          <button matSuffix mat-button>
+            <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
+          </button>
+        </div>
+      </div>
     </div>
     <div class="admin-template__body">
       <router-outlet></router-outlet>

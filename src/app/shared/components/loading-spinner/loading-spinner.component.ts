@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store/app.state';
+import { getLoading } from 'src/app/store/selectors/spinner.selector';
 
 @Component({
   selector: 'app-loading-spinner',
@@ -6,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading-spinner.component.scss'],
 })
 export class LoadingSpinnerComponent implements OnInit {
-  constructor() {}
+  showLoading?: Observable<boolean>;
+  constructor(private store: Store<AppState>) {
+    this.showLoading = this.store.select(getLoading);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

@@ -38,4 +38,8 @@ $boxShadowLeft: #508ff41a;
     padding: 8px;
     background-color: $backgroundLeft;
   }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
 }

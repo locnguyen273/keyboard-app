@@ -27,14 +27,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './store/reducers/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ProfileComponent } from './pages/client/profile/profile.component';
-import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
 import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { appReducer } from './store/app.state';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -51,10 +50,10 @@ import { appReducer } from './store/app.state';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    LoginAdminComponent,
     HomeAdminComponent,
     AdminTemplateComponent,
     LoadingSpinnerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     // core and shared
