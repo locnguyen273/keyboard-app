@@ -11,10 +11,19 @@ import { getLoading } from 'src/app/store/selectors/spinner.selector';
 })
 export class AdminTemplateComponent implements OnInit {
   showLoading?: Observable<boolean>;
+  showUserProfileDropdown: boolean = false;
   search : String ="";
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.showLoading = this.store.select(getLoading);
+  }
+
+  toggleMenu(): void {
+    this.showUserProfileDropdown = !this.showUserProfileDropdown;
+  }
+
+  clickedOutside(): void {
+    this.showUserProfileDropdown = false;
   }
 }

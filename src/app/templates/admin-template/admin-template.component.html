@@ -7,18 +7,24 @@
     </div>
     <div class="admin-template__left__body"></div>
   </div>
-  <div class="admin-template__right">
+  <div class="admin-template__right" clickOutside (clickOutside)="clickedOutside()">
     <div class="admin-template__header">
       <div class="admin-template__container">
-        <mat-form-field class="example-full-width" appearance="outline">
-          <span matPrefix> </span>
-          <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="search">
-          <button matSuffix mat-button><mat-icon>search</mat-icon></button>
-        </mat-form-field>
-        <div class="admin-template__container--right">
-          <button matSuffix mat-button>
+        <form autocomplete="off">
+          <div class="admin-template__autocomplete">
+            <input class="admin-template__autocomplete--input" type="text" name="myCountry" placeholder="Tìm kiếm...">
+            <button type="submit" class="admin-template__autocomplete--submit"><i class="fa fa-search"></i></button>
+          </div>
+        </form>
+
+        <div class="admin-template__container__right">
+          <button class="admin-template__container__user" (click)="toggleMenu()">
             <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
           </button>
+          <div class="admin-template__dropdown" *ngIf="showUserProfileDropdown">
+            <a [routerLink]="'/profile'">Thông tin cá nhân</a>
+            <a>Đăng xuất</a>
+          </div>
         </div>
       </div>
     </div>

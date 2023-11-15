@@ -12,7 +12,6 @@ export class AppComponent {
 
   constructor(private checkTokenService: CheckTokenService, private router: Router) {
     this.checkTokenService.oncheckToken();
-    console.log(JSON.parse(String(localStorage.getItem('userInfo'))).role);
     if(JSON.parse(String(localStorage.getItem('userInfo')))?.role === 'admin') {
       this.router.navigateByUrl('/admin/home')
     }
