@@ -1,0 +1,35 @@
+<app-loading-spinner *ngIf="showLoading | async"></app-loading-spinner>
+<div class="admin-template">
+  <div class="admin-template__left">
+    <div class="admin-template__left__header">
+      <img src="../../../assets/images/icon-logo-removebg-preview.png" alt="logo">
+      <h3>Betall Keyboard</h3>
+    </div>
+    <div class="admin-template__left__body"></div>
+  </div>
+  <div class="admin-template__right" clickOutside (clickOutside)="clickedOutside()">
+    <div class="admin-template__header">
+      <div class="admin-template__container">
+        <form autocomplete="off">
+          <div class="admin-template__autocomplete">
+            <input class="admin-template__autocomplete--input" type="text" name="myCountry" placeholder="Tìm kiếm...">
+            <button type="submit" class="admin-template__autocomplete--submit"><i class="fa fa-search"></i></button>
+          </div>
+        </form>
+
+        <div class="admin-template__container__right">
+          <button class="admin-template__container__user" (click)="toggleMenu()">
+            <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
+          </button>
+          <div class="admin-template__dropdown" *ngIf="showUserProfileDropdown">
+            <a [routerLink]="'/profile'">Thông tin cá nhân</a>
+            <a>Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="admin-template__body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

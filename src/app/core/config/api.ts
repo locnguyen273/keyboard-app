@@ -1,1 +1,1 @@
-export const DOMAIN_URL = "http://localhost:5000/api/";
+export const DOMAIN_URL = "https://ecommerce-shopping-api.onrender.com/api/";

@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonTemplatesComponent } from './templates/common-templates/common-templates.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ServiceComponent } from './pages/service/service.component';
-import { IntroduceComponent } from './pages/introduce/introduce.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
+import { HomeComponent } from './pages/client/home/home.component';
+import { ServiceComponent } from './pages/client/service/service.component';
+import { IntroduceComponent } from './pages/client/introduce/introduce.component';
+import { ProductListComponent } from './pages/client/product-list/product-list.component';
 import { AuthTemplatesComponent } from './templates/auth-templates/auth-templates.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginComponent } from './pages/client/login/login.component';
+import { RegisterComponent } from './pages/client/register/register.component';
+import { ProfileComponent } from './pages/client/profile/profile.component';
+import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
+import { AdminTemplateComponent } from './templates/admin-template/admin-template.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -20,7 +23,7 @@ const routes: Routes = [
       { path: 'introduce', component: IntroduceComponent },
       { path: 'service', component: ServiceComponent },
       { path: 'profile', component: ProfileComponent },
-    ]
+    ],
   },
   {
     path: '',
@@ -28,12 +31,22 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-    ]
-  }
+    ],
+  },
+
+  {
+    path: 'admin',
+    component: AdminTemplateComponent,
+    children: [
+      { path: 'home', component: HomeAdminComponent },
+    ],
+  },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'page-not-found' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
