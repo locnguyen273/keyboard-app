@@ -5,7 +5,9 @@
       <img src="../../../assets/images/icon-logo-removebg-preview.png" alt="logo">
       <h3>Betall Keyboard</h3>
     </div>
-    <div class="admin-template__left__body"></div>
+    <div class="admin-template__left__body">
+
+    </div>
   </div>
   <div class="admin-template__right" clickOutside (clickOutside)="clickedOutside()">
     <div class="admin-template__header">
@@ -18,12 +20,18 @@
         </form>
 
         <div class="admin-template__container__right">
-          <button class="admin-template__container__user" (click)="toggleMenu()">
-            <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
-          </button>
-          <div class="admin-template__dropdown" *ngIf="showUserProfileDropdown">
-            <a [routerLink]="'/profile'">Thông tin cá nhân</a>
-            <a>Đăng xuất</a>
+          <div class="admin-template__user">
+            <button>
+              <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
+            </button>
+            <ul class="admin-template__dropdown">
+              <li>
+                <a [routerLink]="'/profile'"><i class="fa-regular fa-user"></i> Thông tin cá nhân</a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
