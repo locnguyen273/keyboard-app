@@ -34,6 +34,9 @@ import { AdminTemplateComponent } from './templates/admin-template/admin-templat
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { appReducer } from './store/app.state';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SideBarComponent } from './shared/components/side-bar/side-bar.component';
+import { AddUserComponent } from './pages/admin/manage-user/add-user/add-user.component';
+import { ListUserComponent } from './pages/admin/manage-user/list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AdminTemplateComponent,
     LoadingSpinnerComponent,
     PageNotFoundComponent,
+    SideBarComponent,
+    AddUserComponent,
+    ListUserComponent,
   ],
   imports: [
     // core and shared
