@@ -1,0 +1,20 @@
+<div *ngIf="sideBarData.length > 0" class="side-bar">
+  <div *ngFor="let item of sideBarData">
+    <ul>
+      <li (click)="item.subNav && showSubnav(item.title)" [ngClass]="showClassOfItemSubNav(item)">
+        <a [class.active]="isActiveMenuItem">
+          <div class="side-bar__item--left">
+            <i class={{item.icon}}></i>
+            {{item.title}}
+          </div>
+          <i *ngIf="item.subNav" class={{item.iconClosed}}></i>
+        </a>
+        <ul>
+          <li *ngFor="let idx of item.subNav" [class.active]="isActiveChildSubNav" (click)="showClassChildSubNav(idx)" routerLink={{idx.path}}>
+            <a class="side-bar__item--child">{{idx.title}}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

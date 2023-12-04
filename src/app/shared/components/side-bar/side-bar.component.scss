@@ -1,0 +1,40 @@
+.side-bar {
+  &__item {
+    a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10.5px 20px;
+      color: #000;
+      font-size: 14px;
+      position: relative;
+      font-weight: 500;
+      line-height: 1.3571428571;
+      text-transform: capitalize;
+    }
+    &--left {
+      i {
+        margin: 0 10px 0 0;
+      }
+    }
+    ul {
+      display: none;
+    }
+    &--child {
+      margin-left: 36px;
+    }
+  }
+  .open {
+    .active {
+      color: #8231d3;
+    }
+    .fa-chevron-right {
+      transform: rotate(90deg);
+      transition: transform 0.3s ease-in-out;
+    }
+    ul {
+      display: block;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}

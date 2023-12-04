@@ -43,17 +43,6 @@ $boxShadowLeft: #508ff41a;
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
-    &__user {
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      border: none;
-      border-radius: 50%;
-      img {
-        width: 100%;
-        border-radius: 50%;
-      }
-    }
   }
 
   &__autocomplete {
@@ -82,15 +71,58 @@ $boxShadowLeft: #508ff41a;
       border: none;
     }
   }
+  &__user {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+
+    button {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+    }
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+    &:hover {
+      .admin-template__dropdown {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+  }
+
   &__dropdown {
-    display: flex;
-    flex-direction: column;
+    list-style: none;
     background: $backgroundLeft;
     position: absolute;
-    top: 60px;
-    right: 40px;
-    width: 170px;
-    height: 100px;
-    border: 1px solid;
+    top: 52px;
+    right: 0;
+    width: 220px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    opacity: 0;
+    a {
+      font-size: 14px;
+      height: 40px;
+      line-height: 24px;
+      display: block;
+      padding: 9px 20px;
+      color: #747474;
+      transition: all 0.3s ease-in;
+      &:hover {
+        background-color: rgb(130, 49, 211, 0.05);
+        color: #8231d3;
+      }
+    }
   }
 }
