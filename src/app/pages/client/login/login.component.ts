@@ -8,7 +8,7 @@ import { loginUserAction } from 'src/app/store/actions/auth.action';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/app.interface';
 import { ToastrService } from 'ngx-toastr';
-import { setHideLoadingSpinner, setLoadingSpinner } from 'src/app/store/actions/loading.action';
+import { SET_HIDE_LOADING_ACTION, setHideLoadingSpinner, setLoadingSpinner } from 'src/app/store/actions/loading.action';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +40,6 @@ export class LoginComponent {
 
   onSubmit(): void {
     let loginRequest = this.loginForm.value;
-    this.store.dispatch(setLoadingSpinner({ status: true }));
     this.auhtService.login(loginRequest).subscribe(
       (res: UserLoginResponse) => {
         if (res.status) {
@@ -50,7 +49,9 @@ export class LoginComponent {
           } else {
             this.router.navigateByUrl('/');
           }
-          this.store.dispatch(setHideLoadingSpinner({ status: false }));
+          this.store.dispatch({
+            type: SET_HIDE_LOADING_ACTION, status: false
+          });
           this.toastr.success(res.message, 'Xin chúc mừng !!!');
           if (!isDevMode) {
             localStorage.setItem('userInfo', btoa(JSON.stringify(loginData)));
