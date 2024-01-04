@@ -10,7 +10,8 @@
           <i *ngIf="item.subNav" class={{item.iconClosed}}></i>
         </a>
         <ul>
-          <li *ngFor="let idx of item.subNav" [class.active]="isActiveChildSubNav" (click)="showClassChildSubNav(idx)" routerLink={{idx.path}}>
+          <li *ngFor="let idx of item.subNav" [class.active]="isActiveChildSubNav" (click)="showClassChildSubNav(idx)"
+            routerLink={{idx.path}}>
             <a class="side-bar__item--child">{{idx.title}}</a>
           </li>
         </ul>
