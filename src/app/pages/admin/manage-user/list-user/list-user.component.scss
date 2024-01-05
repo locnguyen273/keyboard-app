@@ -1,0 +1,27 @@
+.users {
+  margin: 20px 40px;
+  max-width: 90vw;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px;
+    height: 60px;
+
+    h3 {
+      font-weight: 500;
+      font-size: 32px;
+    }
+
+    button {
+      background-color: #8231d3;
+      font-size: 14px;
+      font-weight: 500;
+      width: 180px;
+      height: 40px;
+      min-height: 40px;
+      color: #fff;
+      border-radius: 8px;
+    }
+  }
+}

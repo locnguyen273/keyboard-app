@@ -26,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ProfileComponent } from './pages/client/profile/profile.component';
@@ -37,6 +39,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SideBarComponent } from './shared/components/side-bar/side-bar.component';
 import { AddUserComponent } from './pages/admin/manage-user/add-user/add-user.component';
 import { ListUserComponent } from './pages/admin/manage-user/list-user/list-user.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyHttpInterceptor } from './common/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -71,6 +75,8 @@ import { ListUserComponent } from './pages/admin/manage-user/list-user/list-user
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
@@ -84,7 +90,11 @@ import { ListUserComponent } from './pages/admin/manage-user/list-user/list-user
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    {
+      provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
