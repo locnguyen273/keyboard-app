@@ -9,7 +9,7 @@
       <app-side-bar></app-side-bar>
     </div>
   </div>
-  <div class="admin-template__right" clickOutside (clickOutside)="clickedOutside()">
+  <div class="admin-template__right">
     <div class="admin-template__header">
       <div class="admin-template__container">
         <form autocomplete="off">
@@ -20,16 +20,16 @@
         </form>
 
         <div class="admin-template__container__right">
-          <div class="admin-template__user">
-            <button>
+          <div class="admin-template__user" clickOutside (clickOutside)="clickedOutside()">
+            <button (click)="showToggleMenu()" class="admin-template-test">
               <img src="https://html.vristo.sbthemes.com/assets/images/user-profile.jpeg" alt="logo">
             </button>
-            <ul class="admin-template__dropdown">
+            <ul class="admin-template__dropdown" *ngIf="showUserProfileDropdown">
               <li>
                 <a [routerLink]="'/profile'"><i class="fa-regular fa-user"></i> Thông tin cá nhân</a>
               </li>
               <li>
-                <a><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+                <a (click)="handleSignOut()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
               </li>
             </ul>
           </div>

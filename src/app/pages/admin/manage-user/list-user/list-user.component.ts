@@ -39,7 +39,6 @@ export class ListUserComponent implements OnInit {
           type: SET_HIDE_LOADING_ACTION,
           status: false,
         });
-        console.log(this.manageListUser);
       }
     });
   }
@@ -51,8 +50,4 @@ export class ListUserComponent implements OnInit {
       return "Ngừng hoạt động"
     }
   }
-
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
 }

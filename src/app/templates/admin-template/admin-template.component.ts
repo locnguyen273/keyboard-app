@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/app.interface';
@@ -13,7 +14,10 @@ export class AdminTemplateComponent implements OnInit {
   showLoading?: Observable<boolean>;
   showUserProfileDropdown: boolean = false;
   search : String ="";
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.showLoading = this.store.select(getLoading);
@@ -25,5 +29,14 @@ export class AdminTemplateComponent implements OnInit {
 
   clickedOutside(): void {
     this.showUserProfileDropdown = false;
+  }
+
+  showToggleMenu() {
+    this.showUserProfileDropdown = !this.showUserProfileDropdown;
+  }
+
+  handleSignOut() {
+    this.router.navigateByUrl("/login");
+    localStorage.removeItem("userInfo");
   }
 }

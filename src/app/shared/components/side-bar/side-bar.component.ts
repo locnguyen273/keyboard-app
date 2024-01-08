@@ -22,41 +22,26 @@ export class SideBarComponent {
   sideBarData = [
     {
       title: 'Quản lý người dùng',
-      path: '/overview',
+      path: '/admin/manage-user/users',
       icon: 'fa-regular fa-user',
       iconClosed: 'fa-solid fa-chevron-right',
 
-      subNav: [
-        {
-          title: 'Thêm người dùng',
-          path: '/admin/manage-user/add-user',
-        },
-        {
-          title: 'Danh sách người dùng',
-          path: '/admin/manage-user/users',
-        },
-      ],
+      // subNav: [
+      //   {
+      //     title: 'Thêm người dùng',
+      //     path: '/admin/manage-user/add-user',
+      //   },
+      //   {
+      //     title: 'Danh sách người dùng',
+      //     path: '/admin/manage-user/users',
+      //   },
+      // ],
     },
     {
       title: 'Quản lý sản phẩm',
       path: '/reports',
       icon: 'fa-solid fa-boxes-stacked',
       iconClosed: 'fa-solid fa-chevron-right',
-
-      subNav: [
-        {
-          title: 'Reports',
-          path: '/reports/reports1',
-        },
-        {
-          title: 'Reports 2',
-          path: '/reports/reports2',
-        },
-        {
-          title: 'Reports 3',
-          path: '/reports/reports3',
-        },
-      ],
     },
     {
       title: 'Quản lý loại sản phẩm',
@@ -69,17 +54,6 @@ export class SideBarComponent {
       path: '/messages',
       icon: 'fa-solid fa-blog',
       iconClosed: 'fa-solid fa-chevron-right',
-
-      subNav: [
-        {
-          title: 'Message 1',
-          path: '/messages/message1',
-        },
-        {
-          title: 'Message 2',
-          path: '/messages/message2',
-        },
-      ],
     },
     {
       title: 'Quản lý nhãn hiệu',
